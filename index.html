@@ -1,6 +1,6 @@
 <head>
     <meta charset="UTF-8">
-    <title>Anti-Entropy 量子之海媒体解码器</title>
+    <title>逆熵&trade;量子之海媒体引擎</title>
 </head>
 <div style="text-align: center;">
     <div id="404"></div>
@@ -8,7 +8,7 @@
         <source id="videoSource" src='' type="video/mp4">
     </video>
     <div style="text-align: center; position: absolute; bottom: 0; width: 99.5%; height: 2%; padding: 5px 0; font-size: 100%;"> 
-        Copyright (c) 2018-2026 Anti-Entropy Organization. All rights reserved. | Anti-Entropy Media Decoder | v2.0.1.5-userdebug
+        Copyright &copy; 2018-2026 Anti-Entropy Organization. All rights reserved. | v2.0.1.7-userdebug
     </div>
 </div>
 <script>
@@ -23,7 +23,8 @@
         const videoElement = document.getElementById('videoSource');
         document.getElementById('videoSource').src = videoUrl;
         if (isAppleDevice) {
-            alert("警告: 您正在使用Apple设备, 性能较差, 可能出现未知异常");
+            alert("警告: 您正在使用Apple设备访问, 无法满足最低性能标准");
+            alert("使用不受支持的设备访问所产生的一切后果，您需自行承担")
         }
         document.getElementById('videoPlayer').style.display = 'block';
         videoElement.onerror = function() {
