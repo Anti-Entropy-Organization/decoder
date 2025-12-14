@@ -8,12 +8,13 @@
         <source id="videoSource" src='' type="video/mp4">
     </video>
     <div style="text-align: center; position: absolute; bottom: 0; width: 99.5%; height: 2%; padding: 5px 0; font-size: 100%;"> 
-        Copyright (c) 2018-2025 Anti-Entropy Organization. All rights reserved. | Anti-Entropy Media Decoder | v2.0.0.7-userdebug
+        Copyright (c) 2018-2026 Anti-Entropy Organization. All rights reserved. | Anti-Entropy Media Decoder | v2.0.1.5-userdebug
     </div>
 </div>
 <script>
     const urlParams = new URLSearchParams(window.location.search);
     const videoPath = urlParams.get('data');
+    const isAppleDevice = /Mac|iPhone|iPod|iPad/.test(navigator.userAgent);
     function Show404Error() {
         document.getElementById('404').innerHTML = '404 - 目标媒体在量子之海中不存在: ' + videoPath;
     }
@@ -21,6 +22,9 @@
         const videoUrl = "https://www.modelscope.cn/models/Anti-Entropy/Sea_of_Quanta/resolve/master/" + videoPath;
         const videoElement = document.getElementById('videoSource');
         document.getElementById('videoSource').src = videoUrl;
+        if (isAppleDevice) {
+            alert("警告: 您正在使用Apple设备, 性能较差, 可能出现未知异常");
+        }
         document.getElementById('videoPlayer').style.display = 'block';
         videoElement.onerror = function() {
             document.getElementById('videoPlayer').style.display = 'none';
@@ -30,5 +34,3 @@
         Show404Error();
     }
 </script>
-
-
