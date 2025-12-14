@@ -1,0 +1,28 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Anti-Entropy 量子之海媒体解码器</title>
+</head>
+<div style="text-align: center;">
+    <div id="404"></div>
+    <video id="videoPlayer" controls width="100%" height="98%" style="display: none; background-color: black;">
+        <source id="videoSource" src='' type="video/mp4">
+    </video>
+    <div style="text-align: center; position: absolute; bottom: 0; width: 99.5%; height: 2%; padding: 5px 0; font-size: 80%;"> 
+        Copyright (c) 2018-2025 Anti-Entropy Organization. All rights reserved. | Anti-Entropy Media Decoder | Version 1.0.7 userdebug
+    </div>
+</div>
+<script>
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+    const videoPath = getQueryParam('data');
+    if (videoPath) {
+        const videoUrl = "https://www.modelscope.cn/models/Anti-Entropy/Sea_of_Quanta/resolve/master/" + videoPath;
+        document.getElementById('videoSource').src = videoUrl;
+        document.getElementById('videoPlayer').style.display = 'block';
+    } else {
+        document.getElementById('404').innerHTML = '404 - 目标媒体在量子之海中不存在: ' + videoPath;
+    }
+</script>
+
