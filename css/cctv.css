@@ -1,0 +1,62 @@
+html, body { height: 100%; margin: 0; padding: 0; }
+body {
+    min-height: 100vh; min-width: 100vw; height: 100vh; width: 100vw; position: absolute;
+    background:
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 40px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0px, rgba(255,255,255,0.018) 1px, transparent 1px, transparent 40px),
+        radial-gradient(ellipse at 78% 8%,rgba(117,153,214,0.07) 0%,rgba(40,55,85,0.105) 55%,rgba(20,27,38,0.14) 100%),
+        linear-gradient(128deg,rgba(32,48,73,.99) 60%,rgba(24,34,54,.99) 100%);
+    background-color: #181f2a;
+    font-family: 'Microsoft YaHei', 'Segoe UI', 'Arial', 'sans-serif';
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+.container { display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100vw; height: 100vh; }
+#404 { font-size: 1.3rem; color: #fff !important; margin-bottom: 10px; text-shadow: 0 1px 6px #22284555; }
+#dplayer { box-shadow: 0 0 44px #11182e66; background: #161d29; border: 1px solid rgba(48,65,102,0.19); width: 100%; max-width: 98vw; max-height: calc(100vh - 44px - 36px); display: none; margin: 0 auto;}
+.footer { position: fixed; left: 0; right: 0; bottom: 16px; text-align: center; color: rgba(242,245,255,.50); font-size: 12px; pointer-events: none; font-family: 'Microsoft YaHei', 'Segoe UI', 'Arial', 'sans-serif'; line-height: 16px; height: 16px; z-index: 10; background: none;}
+.dialog-mask { position: fixed; left: 0; top: 0; right: 0; bottom: 0; background: rgba(11, 11, 24, 0.45); z-index: 99; display: flex; align-items: center; justify-content: center;}
+.dialog-box { background: #262a35; color: #e3eaf4; border-radius: 7px; box-shadow: 0 4px 24px #02051433; padding: 32px 28px 24px 28px; min-width: 348px; max-width: 800px; font-family: 'Segoe UI', 'Microsoft YaHei', 'Arial', 'sans-serif'; font-size: 15px; display: flex; flex-direction: column; align-items: stretch; border: 1px solid #2e3749;}
+.dialog-box h3 { color: #ffffff; font-size: 1.26em; margin: 0 0 16px 0; font-weight: 600; letter-spacing: 0.02em;}
+.dialog-box .tip { color: #c1cad6; font-size: 13px; margin-bottom: 12px; text-align: left; line-height: 1.6; opacity: 0.92;}
+.cmd-wrap-block { position: relative; width: 100%; max-width: 100%; overflow: hidden;}
+.dialog-box .cmd-wrap { width: 100%; background: #0b0e1b; border-radius: 0; border: 1px solid #273141; padding: 12px 39px 12px 9px; margin: 0 0 16px 0; user-select: all; font-family: monospace, 'Fira Mono', 'Consolas', sans-serif; color: #8ebaff; font-size: 14px; text-align: left; word-break: break-all; min-height: 22px; overflow-x: auto; white-space: pre; max-width: 100%; scrollbar-color: #213c80 #232434; scrollbar-width: thin;}
+.dialog-box .cmd-wrap::-webkit-scrollbar { height: 8px; background: #262a35;}
+.dialog-box .cmd-wrap::-webkit-scrollbar-thumb { background: #5b6fa0; border-radius: 3px;}
+.dialog-box .cmd-wrap::-webkit-scrollbar-track { background: #232434; border-radius: 0;}
+.dialog-box .cmd-wrap::-webkit-scrollbar-corner { background: transparent;}
+.cmd-copy-icon { position: absolute; top: 10px; right: 12px; width: 22px; height: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0.88; transition: opacity 0.16s; z-index: 2; background: transparent;}
+.cmd-copy-icon:hover { opacity: 1.0; }
+.cmd-copy-icon svg { display:block; width: 20px; height: 20px; fill: #cac9f6; pointer-events: none;}
+.dialog-btn-row { width: 100%; display: flex; flex-direction: row; justify-content: flex-end; gap: 10px; margin-top: 7px; margin-bottom: 0;}
+.dialog-box .close-btn { color: #a8aec3; background: none; border: none; cursor: pointer; font-size: 14px; padding: 6px 23px; border-radius: 4px; font-family: inherit; font-weight: 400; transition: background 0.18s;}
+.dialog-box .close-btn:hover { background: #212a32; color: #e3eaf4;}
+.cmd-copy-icon.copied { animation: copiedAnimation 0.6s ease-in-out;}
+@keyframes copiedAnimation { 0% { transform: scale(1); fill: #a5bfee;} 50% { transform: scale(1.2); fill: #0800ff;} 100% { transform: scale(1); fill: #2200ff;} }
+.cmd-copy-icon.copied svg { animation: svgPulse 0.6s ease-in-out;}
+@keyframes svgPulse { 0% { fill: #a5bfee; } 50% { fill: #2600ff; transform: scale(1.1); } 100% { fill: #0011ff; } }
+@media (max-width: 350px) {
+    .footer { font-size: 10px; line-height:12px; height:12px;}
+    .dialog-box { min-width: 180px; max-width: 98vw;}
+    .dialog-box .cmd-wrap { font-size: 12px;}
+}
+.brandMark { position: fixed; left: 2px; top: 2px; z-index: 5; width: 270px; opacity: .95; pointer-events: none; user-select: none; filter: drop-shadow(0 14px 34px rgba(0,0,0,.42)); display: none; }
+.brandMark img { display:block; width:100%; height:auto;}
+.dplayer-toggle-setting-input:checked + label::before {
+    background-color: #ff2626 !important; 
+}
+#dplayer .dplayer-notice {
+    white-space: nowrap !important;     /* 不换行 */
+}
+.dplayer-setting-box.dplayer-setting-box-speed {
+    height: 300px !important;
+    max-height: 60vh !important;
+}
+.dplayer-setting-speed-item-active{
+    background: #ff2626e0 !important;
+}
+
+.dplayer-menu-item a {
+    text-decoration: none !important;
+}
